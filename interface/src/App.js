@@ -13,6 +13,10 @@ import BackendUrlInput from "./BackendUrlInput";
 import LoadingSpinner from "./LoadingSpinner";
 import NotificationCheckbox from './NotificationCheckbox';
 
+import github_logo from './content/GitHub-Mark-32px.png'
+import k_dagene from './content/k_dagene.png';
+import norconsult from './content/norconsult.svg'
+
 const useStyles = () => ({
     root: {
         display: 'flex',
@@ -126,8 +130,9 @@ const App = ({ classes }) => {
     return (
         <div className={classes.root}>
             <div className={classes.title}>
+                <img src={norconsult} />
                 <Typography variant="h3">
-                    DALL-E Playground <span role="img" aria-label="sparks-emoji">✨</span>
+                    DALL-E Playground
                 </Typography>
             </div>
 
@@ -151,7 +156,7 @@ const App = ({ classes }) => {
                             <TextPromptInput enterPressedCallback={enterPressedCallback} promptText={promptText} setPromptText={setPromptText}
                                 disabled={isFetchingImgs || !validBackendUrl} />
 
-                            <NotificationCheckbox isNotificationOn={notificationsOn} setNotifications={setNotificationsOn}/>
+                            <NotificationCheckbox isNotificationOn={notificationsOn} setNotifications={setNotificationsOn} />
 
                             <FormControl className={classes.imagesPerQueryControl}
                                 variant="outlined">
@@ -176,12 +181,16 @@ const App = ({ classes }) => {
                         Generation execution time: {queryTime} sec
                     </Typography>}
                 </div>
-                
+
                 {(generatedImages.length > 0 || apiError || isFetchingImgs) &&
                     <div className={classes.gallery}>
                         {getGalleryContent()}
                     </div>
                 }
+            </div>
+            <div>
+                <img src={k_dagene} />
+                <p>Based on <a href="https://github.com/saharmor/dalle-playground">dalle-playground <img src={github_logo} /></a></p>
             </div>
         </div>
     )
